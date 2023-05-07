@@ -1,0 +1,7 @@
+<nz-card nzTitle="Settings">
+  <input nz-input placeholder="Token" [(ngModel)]="token" (ngModelChange)="updateToken($event)" />
+  <input nz-input placeholder="Player name" [(ngModel)]="playerName" (ngModelChange)="updatePlayerName($event)"/>
+  <input nz-input placeholder="Player id" [(ngModel)]="playerId" (ngModelChange)="updatePlayerId($event)" />
+  <input nz-input placeholder="Channel id" [(ngModel)]="channelId" (ngModelChange)="updateChannelId($event)" />
+  <input nz-input placeholder="Bot name" [(ngModel)]="botName" (ngModelChange)="updateBotName($event)" />
+</nz-card>

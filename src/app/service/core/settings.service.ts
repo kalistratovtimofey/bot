@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import {FarmSettings, HuntSettings, Settings, TrainSettings, WorkSettings} from "./model/settings";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService {
+
+  private settings: Settings
 
   private playerName: string|null = null;
   private playerId: string|null = null;
@@ -12,26 +15,89 @@ export class SettingsService {
 
 
   constructor() {
-    // todo config, local-storage, setter
-    this.playerName = 'stubby';
-    this.channelId = '1058469312077250590';
-    this.token = 'ODkxNzIwMjM3ODA2OTE5OTY0.GIEC2o.bjiUwKTUMP1QHT0_UqRSPfXLWgoEqI9rVRf4_s';
-    this.playerId = '891720237806919964';
+    const storedSettings = localStorage.getItem('settings');
+    if (storedSettings) {
+      this.settings = JSON.parse(storedSettings);
+    } else {
+      this.settings = {
+        token: '',
+        playerName: '',
+        playerId: '',
+        channelId: '',
+        botName: 'EPIC RPG',
+
+        hunt: {
+          enabled: true,
+          useHardmode: true,
+          useHeal: false,
+        },
+
+        adventure: {
+          enabled: true,
+          useHardmode: true,
+          useHeal: false,
+        },
+
+        work: {
+          enabled: true,
+          command: 'chainsaw',
+        },
+
+        farm: {
+          enabled: true,
+          type: ''
+        },
+
+        train: {
+          enabled: true,
+          enabledPetCapture: true,
+        }
+      };
+    }
   }
 
-  getPlayerName(): string|null {
-    return this.playerName;
+  getPlayerName(): string {
+    return this.settings.playerName;
   }
 
-  getToken(): string|null {
-    return this.token;
+  getToken(): string {
+    return this.settings.token;
   }
 
-  getChannelId(): string|null {
-    return this.channelId;
+  getChannelId(): string {
+    return this.settings.channelId;
   }
 
-  getPlayerId(): string|null {
-    return this.playerId;
+  getPlayerId(): string {
+    return this.settings.playerId;
+  }
+
+  getBotName(): string {
+    return this.settings.botName;
+  }
+
+  getHuntSettings(): HuntSettings {
+    return this.settings.hunt;
+  }
+
+  getAdvSettings(): HuntSettings {
+    return this.settings.adventure;
+  }
+
+  getWorkSettings(): WorkSettings {
+    return this.settings.work;
+  }
+
+  getFarmSettings(): FarmSettings {
+    return this.settings.farm;
+  }
+
+  getTrainSettings(): TrainSettings {
+    return this.settings.train;
+  }
+
+  setSettings(settings: Partial<Settings>): void {
+    this.settings = { ...this.settings, ...settings};
+    localStorage.setItem('settings', JSON.stringify(this.settings));
   }
 }

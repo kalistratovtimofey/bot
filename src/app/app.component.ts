@@ -29,12 +29,12 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.reader.myBotMessages.subscribe(message => console.log(message));
-    this.petsServie.start();
-    this.trainService.start();
-    this.huntService.start();
-    this.advService.start();
-    this.workService.start();
-    this.farmService.start();
+    // this.petsServie.start();
+    // this.trainService.start();
+    // this.huntService.start();
+    // this.advService.start();
+    // this.workService.start();
+    // this.farmService.start();
   }
 
 

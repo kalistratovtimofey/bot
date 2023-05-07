@@ -1,0 +1,12 @@
+<nz-card nzTitle="HUNT">
+    <label nz-checkbox [(ngModel)]="enabled">enabled</label>
+    <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="useHardmode" >use hardmode</label>
+  <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="useHealing" >use heal</label>
+  </nz-card>
+
+
+<nz-card nzTitle="ADVENTURE">
+  <label nz-checkbox [(ngModel)]="enabledAdventure">enabled</label>
+  <label nz-checkbox [nzDisabled]="!enabledAdventure"  [(ngModel)]="useAdventureHardmode">use hardmode</label>
+  <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="useHealingAdventure" >use heal</label>
+</nz-card>
