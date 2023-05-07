@@ -1,1 +1,4 @@
-<p>train works!</p>
+<nz-card nzTitle="TRAIN">
+  <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()">enabled</label>
+  <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="enabledPets" (ngModelChange)="update()">Pets catching enabled</label>
+</nz-card>

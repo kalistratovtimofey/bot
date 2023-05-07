@@ -1,12 +1,12 @@
 <nz-card nzTitle="HUNT">
-    <label nz-checkbox [(ngModel)]="enabled">enabled</label>
-    <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="useHardmode" >use hardmode</label>
-  <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="useHealing" >use heal</label>
+    <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="updateHunt()">enabled</label>
+    <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="useHardmode" (ngModelChange)="updateHunt()">use hardmode</label>
+  <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="useHealing" (ngModelChange)="updateHunt()">use heal</label>
   </nz-card>
 
 
 <nz-card nzTitle="ADVENTURE">
-  <label nz-checkbox [(ngModel)]="enabledAdventure">enabled</label>
-  <label nz-checkbox [nzDisabled]="!enabledAdventure"  [(ngModel)]="useAdventureHardmode">use hardmode</label>
-  <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="useHealingAdventure" >use heal</label>
+  <label nz-checkbox [(ngModel)]="enabledAdventure" (ngModelChange)="updateAdv()">enabled</label>
+  <label nz-checkbox [nzDisabled]="!enabledAdventure" (ngModelChange)="updateAdv()" [(ngModel)]="useAdventureHardmode">use hardmode</label>
+  <label  nz-checkbox [nzDisabled]="!enabled" (ngModelChange)="updateAdv()" [(ngModel)]="useHealingAdventure" >use heal</label>
 </nz-card>

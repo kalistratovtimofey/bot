@@ -4,6 +4,7 @@ import {DiscordReaderService} from "./core/discord-reader.service";
 import {DiscordWriterService} from "./core/discord-writer.service";
 import {filter} from "rxjs/operators";
 import {adventureMonsters} from "./model/AdventureMobList";
+import {SettingsService} from "./core/settings.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,14 @@ export class AdvService {
   private advTime = 60 * 60 * 1000;
   private needHealing = false;
 
-  constructor(private reader: DiscordReaderService, private writer: DiscordWriterService) { }
+  constructor(private reader: DiscordReaderService, private writer: DiscordWriterService, private settings: SettingsService) { }
 
   start() {
+    if (!this.settings.getAdvSettings().enabled) {
+      return;
+    }
+    this.isHardmode = this.settings.getAdvSettings().useHardmode;
+    this.needHealing = this.settings.getAdvSettings().useHeal;
     if (!this.subscription) {
       this. subscription = this.reader.myBotMessages.pipe(
         filter(message => message.content.includes('found ') && this.isAdventureMessage(message.content))

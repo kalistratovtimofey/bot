@@ -14,7 +14,6 @@ export class DiscordWriterService {
   constructor(private api: DiscordApiService, private stopper: AntibotStopperService) {
     combineLatest([this.stopper.isAllowed$, interval(1000)])
       .subscribe(([isAllowed]) => {
-      console.log('sending message');
         if (isAllowed) {
           const message = this.messageQueue.pop();
           if (message) {

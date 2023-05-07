@@ -3,6 +3,7 @@ import {Subscription, timer} from "rxjs";
 import {DiscordReaderService} from "./core/discord-reader.service";
 import {DiscordWriterService} from "./core/discord-writer.service";
 import {filter} from "rxjs/operators";
+import {SettingsService} from "./core/settings.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,13 @@ export class TrainService {
   private trainTime = 15 * 60 * 1000;
 
 
-  constructor(private reader: DiscordReaderService, private writer: DiscordWriterService) { }
+  constructor(private reader: DiscordReaderService, private writer: DiscordWriterService, private settings: SettingsService) { }
 
   start() {
+    if (!this.settings.getTrainSettings().enabled) {
+      return;
+    }
+
     if (!this.subscription) {
       this. subscription = this.reader.myBotMessages.pipe(
         filter(message => message.content.includes('is training '))

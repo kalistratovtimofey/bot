@@ -20,6 +20,7 @@ import {NzFormModule} from "ng-zorro-antd/form";
 import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzCardModule} from "ng-zorro-antd/card";
 import {NzInputModule} from "ng-zorro-antd/input";
+import {NzSelectModule} from "ng-zorro-antd/select";
 
 registerLocaleData(en);
 
@@ -41,7 +42,8 @@ registerLocaleData(en);
     NzCheckboxModule,
     NzDividerModule,
     NzCardModule,
-    NzInputModule
+    NzInputModule,
+    NzSelectModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

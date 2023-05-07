@@ -3,6 +3,7 @@ import {Subscription, timer} from "rxjs";
 import {DiscordReaderService} from "./core/discord-reader.service";
 import {DiscordWriterService} from "./core/discord-writer.service";
 import {filter} from "rxjs/operators";
+import {SettingsService} from "./core/settings.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,13 @@ export class PetsService {
 
   private subscription: Subscription | null = null;
 
-  constructor(private reader: DiscordReaderService, private writer: DiscordWriterService) { }
+  constructor(private reader: DiscordReaderService, private writer: DiscordWriterService, private settings: SettingsService) { }
 
   start() {
+    if (!this.settings.getTrainSettings().enabledPetCapture) {
+      return;
+    }
+
     if (!this.subscription) {
       this. subscription = this.reader.myBotMessages.pipe(
         filter(message => message.content.toLowerCase().includes('suddenly, a '))

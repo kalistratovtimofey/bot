@@ -18,6 +18,11 @@ export class WorkService {
   constructor(private reader: DiscordReaderService, private writer: DiscordWriterService, private settings: SettingsService) { }
 
   start() {
+    if (!this.settings.getWorkSettings().enabled) {
+      return;
+    }
+
+    this.workType = this.settings.getWorkSettings().command;
     if (!this.subscription) {
       this. subscription = this.reader.myBotMessages.pipe(
         filter(message => message.content.includes('plants '))

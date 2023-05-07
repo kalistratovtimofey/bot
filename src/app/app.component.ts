@@ -24,17 +24,23 @@ export class AppComponent implements OnInit{
     private farmService: FarmService,
     private workService: WorkService,
     private petsServie: PetsService,
-    private reader: DiscordReaderService) {
+    private reader: DiscordReaderService,
+    api: DiscordApiService
+  ) {
+    api.read(20).subscribe(messages => console.log(messages));
   }
 
   ngOnInit(): void {
     this.reader.myBotMessages.subscribe(message => console.log(message));
-    // this.petsServie.start();
-    // this.trainService.start();
-    // this.huntService.start();
-    // this.advService.start();
-    // this.workService.start();
-    // this.farmService.start();
+  }
+
+  start() {
+    this.petsServie.start();
+    this.trainService.start();
+    this.huntService.start();
+    this.advService.start();
+    this.workService.start();
+    this.farmService.start();
   }
 
 
