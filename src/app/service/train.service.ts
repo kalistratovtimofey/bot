@@ -51,7 +51,7 @@ export class TrainService {
       }
       let foundPair = false;
       for(const name in pairs) {
-        if (text.toLowerCase().includes('this a ' + name) && text.includes(pairs[name])) {
+        if (text.toLowerCase().includes('this a **' + name) && text.includes(pairs[name])) {
           this.writer.pushReaction('yes');
           foundPair = true;
         }
