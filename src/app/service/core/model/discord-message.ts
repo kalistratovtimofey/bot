@@ -6,4 +6,5 @@ export interface DiscordMessage {
   author: DiscordAuthor;
   timestamp: string;
   application_id?: string;
+  channel_id?: string,
 }
