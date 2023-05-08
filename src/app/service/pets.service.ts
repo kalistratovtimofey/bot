@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Subscription, timer} from "rxjs";
 import {DiscordReaderService} from "./core/discord-reader.service";
 import {DiscordWriterService} from "./core/discord-writer.service";
-import {filter} from "rxjs/operators";
+import {filter, map} from "rxjs/operators";
 import {SettingsService} from "./core/settings.service";
 
 @Injectable({
@@ -21,13 +21,14 @@ export class PetsService {
 
     if (!this.subscription) {
       this. subscription = this.reader.myBotMessages.pipe(
-        filter(message => message.content.toLowerCase().includes('suddenly, a '))
+        map(message => message.embeds?.[0].fields?.[0].value),
+        filter(message => !!message)
       ).subscribe(
         message => {
-          const happinessRegex = /hapiness\*\*: ([0-9]+)/;
+          const happinessRegex = /happiness\*\*: ([0-9]+)/;
           const hungerRegex = /hunger\*\*: ([0-9]+)/;
-          const happiness = +message.content.match(happinessRegex)![1];
-          const hunger = +message.content.match(hungerRegex)![1];
+          const happiness = +message!.toLowerCase().match(happinessRegex)![1];
+          const hunger = +message!.toLowerCase().match(hungerRegex)![1];
           let feeds = 0
           if (hunger > 10) {
             feeds = 1;

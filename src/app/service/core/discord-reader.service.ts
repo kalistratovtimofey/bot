@@ -11,6 +11,7 @@ import {filter} from "rxjs/operators";
 export class DiscordReaderService {
 
   myBotMessages: Observable<DiscordMessage>;
+  myRichMessages: Observable<DiscordMessage>;
 
   private botUsername = 'EPIC RPG';
 
@@ -19,5 +20,15 @@ export class DiscordReaderService {
       filter(message => message.author.username === this.botUsername),
       filter(message => message.content.includes('**'+this.settings.getPlayerName()+ '**') || message.content.includes(this.settings.getPlayerId()!))
     )
+
+    this.myRichMessages = this.ws.messages$.pipe(
+      filter(message => message.author.username === this.botUsername),
+      filter(message => this.isMyRichMessage(message))
+    )
+  }
+
+  private isMyRichMessage(message: DiscordMessage): boolean {
+    const field = message.embeds?.[0].fields?.[0];
+    return !!field && field.name.includes(this.settings.getPlayerId()!);
   }
 }
