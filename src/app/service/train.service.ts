@@ -60,22 +60,22 @@ export class TrainService extends AbstractCommandService{
     if (text.includes('field')) {
       console.log('field training');
       const word = text.toLowerCase().includes('apple') ? 'apple' : 'banana';
-      if (text.includes('first')) {
+      if (text.includes('first*')) {
         this.writer.pushReaction(word[0]);
       }
-      if (text.includes('second')) {
+      if (text.includes('second*')) {
         this.writer.pushReaction(word[1]);
       }
-      if (text.includes('third')) {
+      if (text.includes('third*')) {
         this.writer.pushReaction(word[2]);
       }
-      if (text.includes('fourth')) {
+      if (text.includes('fourth*')) {
         this.writer.pushReaction(word[3]);
       }
-      if (text.includes('fifth')) {
+      if (text.includes('fifth*')) {
         this.writer.pushReaction(word[4]);
       }
-      if (text.includes('sixth')) {
+      if (text.includes('sixth*')) {
         this.writer.pushReaction(word[5]);
       }
     }
