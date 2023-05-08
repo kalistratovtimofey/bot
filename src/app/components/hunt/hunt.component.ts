@@ -21,11 +21,15 @@ export class HuntComponent {
   }
 
   updateHunt() {
-    this.settings.setSettings({hunt: {enabled:this.enabled, useHardmode: this.useHardmode, useHeal: this.useHealing}});
+    setTimeout(() => {
+      this.settings.setSettings({hunt: {enabled:this.enabled, useHardmode: this.useHardmode, useHeal: this.useHealing}});
+    }, 1);
   }
 
   updateAdv(): void {
-    this.settings.setSettings({adventure: {enabled:this.enabledAdventure, useHardmode: this.useAdventureHardmode, useHeal: this.useHealingAdventure}});
+    setTimeout(() => {
+      this.settings.setSettings({adventure: {enabled:this.enabledAdventure, useHardmode: this.useAdventureHardmode, useHeal: this.useHealingAdventure}});
+    }, 1);
 
   }
 

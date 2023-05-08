@@ -16,7 +16,9 @@ export class FarmComponent {
   }
 
   update() {
-    this.settings.setSettings({farm: {enabled: this.enabled, type: this.suffix}});
+    setTimeout(() => {
+      this.settings.setSettings({farm: {enabled: this.enabled, type: this.suffix}});
+    });
   }
 
 }

@@ -15,7 +15,9 @@ export class TrainComponent {
   }
 
   update() {
-    this.settings.setSettings({train: {enabled: this.enabled, enabledPetCapture: this.enabledPets}})
+    setTimeout(() => {
+      this.settings.setSettings({train: {enabled: this.enabled, enabledPetCapture: this.enabledPets}})
+    });
   }
 
 }

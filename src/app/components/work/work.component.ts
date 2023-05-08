@@ -16,7 +16,9 @@ constructor(private settings: SettingsService, public workService: WorkService) 
 }
 
 update() {
-  this.settings.setSettings({work: {enabled: this.enabled, command: this.selectedCommand}});
+  setTimeout(() => {
+    this.settings.setSettings({work: {enabled: this.enabled, command: this.selectedCommand}});
+  });
 }
 
 }
