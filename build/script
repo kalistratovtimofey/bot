@@ -1,0 +1,11 @@
+rm dist/bot.html &&
+touch dist/bot.html &&
+cat build/top.html >> dist/bot.html &&
+cat dist/epic-rpg-bot/styles.css >> dist/bot.html &&
+cat build/center.html >> dist/bot.html &&
+cat dist/epic-rpg-bot/main.js >> dist/bot.html &&
+cat build/script.html >> dist/bot.html &&
+cat dist/epic-rpg-bot/polyfills.js >> dist/bot.html &&
+cat build/script.html >> dist/bot.html &&
+cat dist/epic-rpg-bot/runtime.js >> dist/bot.html &&
+cat build/bottom.html >> dist/bot.html
