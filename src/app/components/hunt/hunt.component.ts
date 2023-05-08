@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {SettingsService} from "../../service/core/settings.service";
+import {HuntService} from "../../service/hunt.service";
+import {AdvService} from "../../service/adv.service";
 
 @Component({
   selector: 'app-hunt',
@@ -14,7 +16,7 @@ export class HuntComponent {
   useAdventureHardmode = this.settings.getAdvSettings().useHardmode;
   useHealingAdventure = this.settings.getAdvSettings().useHeal;
 
-  constructor(public settings: SettingsService) {
+  constructor(public settings: SettingsService, public huntService: HuntService, public advService: AdvService) {
 
   }
 

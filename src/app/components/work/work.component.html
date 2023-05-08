@@ -1,29 +1,37 @@
 <nz-card nzTitle="WORK">
-  <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()">enabled</label>
-  <nz-select [(ngModel)]="selectedCommand" (ngModelChange)="update()">
-    <nz-option-group nzLabel="Wood">
-      <nz-option nzValue="chop" nzLabel="chop"></nz-option>
-      <nz-option nzValue="axe" nzLabel="axe"></nz-option>
-      <nz-option nzValue="bowsaw" nzLabel="bowsaw"></nz-option>
-      <nz-option nzValue="chainsaw" nzLabel="chainsaw"></nz-option>
-    </nz-option-group>
-    <nz-option-group nzLabel="Fish">
-      <nz-option nzValue="fish" nzLabel="fish"></nz-option>
-      <nz-option nzValue="net" nzLabel="net"></nz-option>
-      <nz-option nzValue="boat" nzLabel="boat"></nz-option>
-      <nz-option nzValue="bigboat" nzLabel="bigboat"></nz-option>
-    </nz-option-group>
-    <nz-option-group nzLabel="Fruit">
-      <nz-option nzValue="pickup" nzLabel="pickup"></nz-option>
-      <nz-option nzValue="ladder" nzLabel="ladder"></nz-option>
-      <nz-option nzValue="tractor" nzLabel="tractor"></nz-option>
-      <nz-option nzValue="greenhouse" nzLabel="greenhouse"></nz-option>
-    </nz-option-group>
-    <nz-option-group nzLabel="Ruby">
-      <nz-option nzValue="mine" nzLabel="mine"></nz-option>
-      <nz-option nzValue="pickaxe" nzLabel="pickaxe"></nz-option>
-      <nz-option nzValue="drill" nzLabel="drill"></nz-option>
-      <nz-option nzValue="dynamite" nzLabel="dynamite"></nz-option>
-    </nz-option-group>
-  </nz-select>
+  <div nz-row>
+    <div nz-col nzSpan="12" class="settings-col">
+      <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()">enabled</label>
+      <br />
+      <nz-select [(ngModel)]="selectedCommand" (ngModelChange)="update()">
+        <nz-option-group nzLabel="Wood">
+          <nz-option nzValue="chop" nzLabel="chop"></nz-option>
+          <nz-option nzValue="axe" nzLabel="axe"></nz-option>
+          <nz-option nzValue="bowsaw" nzLabel="bowsaw"></nz-option>
+          <nz-option nzValue="chainsaw" nzLabel="chainsaw"></nz-option>
+        </nz-option-group>
+        <nz-option-group nzLabel="Fish">
+          <nz-option nzValue="fish" nzLabel="fish"></nz-option>
+          <nz-option nzValue="net" nzLabel="net"></nz-option>
+          <nz-option nzValue="boat" nzLabel="boat"></nz-option>
+          <nz-option nzValue="bigboat" nzLabel="bigboat"></nz-option>
+        </nz-option-group>
+        <nz-option-group nzLabel="Fruit">
+          <nz-option nzValue="pickup" nzLabel="pickup"></nz-option>
+          <nz-option nzValue="ladder" nzLabel="ladder"></nz-option>
+          <nz-option nzValue="tractor" nzLabel="tractor"></nz-option>
+          <nz-option nzValue="greenhouse" nzLabel="greenhouse"></nz-option>
+        </nz-option-group>
+        <nz-option-group nzLabel="Ruby">
+          <nz-option nzValue="mine" nzLabel="mine"></nz-option>
+          <nz-option nzValue="pickaxe" nzLabel="pickaxe"></nz-option>
+          <nz-option nzValue="drill" nzLabel="drill"></nz-option>
+          <nz-option nzValue="dynamite" nzLabel="dynamite"></nz-option>
+        </nz-option-group>
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="12">
+      <app-timer [commandService]="workService" [timeToFire]="workService.timeToFire$ | async"></app-timer>
+    </div>
+  </div>
 </nz-card>

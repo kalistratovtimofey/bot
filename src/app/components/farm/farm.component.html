@@ -1,9 +1,17 @@
-<nz-card nzTitle="WORK">
-  <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()">enabled</label>
-  <nz-select [(ngModel)]="suffix" (ngModelChange)="update()">
-      <nz-option nzValue="" nzLabel="default"></nz-option>
-      <nz-option nzValue="carrot" nzLabel="carrot"></nz-option>
-      <nz-option nzValue="bread" nzLabel="bread"></nz-option>
-      <nz-option nzValue="potato" nzLabel="potato"></nz-option>
-  </nz-select>
+<nz-card nzTitle="FARM">
+  <div nz-row>
+    <div nz-col nzSpan="12" class="settings-col">
+      <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()">enabled</label>
+      <br />
+      <nz-select [(ngModel)]="suffix" (ngModelChange)="update()">
+        <nz-option nzValue="" nzLabel="default"></nz-option>
+        <nz-option nzValue="carrot" nzLabel="carrot"></nz-option>
+        <nz-option nzValue="bread" nzLabel="bread"></nz-option>
+        <nz-option nzValue="potato" nzLabel="potato"></nz-option>
+      </nz-select>
+    </div>
+    <div nz-col nzSpan="12">
+      <app-timer [commandService]="farmService" [timeToFire]="farmService.timeToFire$ | async"></app-timer>
+    </div>
+  </div>
 </nz-card>

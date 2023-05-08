@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {SettingsService} from "../../service/core/settings.service";
+import {WorkService} from "../../service/work.service";
 
 @Component({
   selector: 'app-work',
@@ -11,11 +12,11 @@ export class WorkComponent {
   enabled = this.settings.getWorkSettings().enabled;
   selectedCommand= this.settings.getWorkSettings().command;
 
-constructor(private settings: SettingsService) {
+constructor(private settings: SettingsService, public workService: WorkService) {
 }
 
 update() {
-  this.settings.setSettings({farm: {enabled: this.enabled, type: this.selectedCommand}});
+  this.settings.setSettings({work: {enabled: this.enabled, command: this.selectedCommand}});
 }
 
 }

@@ -1,0 +1,6 @@
+timofey@timofey-H310M-DS2:~/test/epic-rpg-bot/dist/epic-rpg-bot$ cat scripts.html >>index-single.html
+timofey@timofey-H310M-DS2:~/test/epic-rpg-bot/dist/epic-rpg-bot$ cat scripts.html >>index-single.html ^C
+timofey@timofey-H310M-DS2:~/test/epic-rpg-bot/dist/epic-rpg-bot$ cat polyfills.230616dec2c7b2e2.js >> index-single.html
+timofey@timofey-H310M-DS2:~/test/epic-rpg-bot/dist/epic-rpg-bot$ cat scripts.html >>index-single.html
+timofey@timofey-H310M-DS2:~/test/epic-rpg-bot/dist/epic-rpg-bot$ cat runtime.195d1d42ad1719e6.js >> index-single.html
+timofey@timofey-H310M-DS2:~/test/epic-rpg-bot/dist/epic-rpg-bot$ cat index-end.html >> index-single.html

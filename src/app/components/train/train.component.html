@@ -1,4 +1,14 @@
 <nz-card nzTitle="TRAIN">
-  <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()">enabled</label>
-  <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="enabledPets" (ngModelChange)="update()">Pets catching enabled</label>
+  <div nz-row>
+    <div nz-col nzSpan="12" class="settings-col">
+      <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()">enabled</label>
+      <br />
+      <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="enabledPets" (ngModelChange)="update()">Pets catching enabled</label>
+    </div>
+    <div nz-col nzSpan="12">
+      <app-timer [commandService]="trainService" [timeToFire]="trainService.timeToFire$ | async"></app-timer>
+    </div>
+  </div>
 </nz-card>
+
+

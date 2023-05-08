@@ -1,0 +1,24 @@
+
+<div nz-row>
+  <div nz-col nzSpan="12">
+    <nz-progress [nzPercent]="percent" [nzFormat]="format" nzType="circle"></nz-progress>
+  </div>
+  <div nz-col nzSpan="12" class="time-set">
+    <div>Start in:</div>
+    <nz-input-group nzCompact>
+      <input type="text" [(ngModel)]="startInMin" nz-input placeholder="MM"/>
+      <input
+        type="text"
+        disabled
+        nz-input
+        placeholder=":"
+        class="demo-input-split"
+        style="width: 30px; bopointer-events: none; background-color: rgb(255, 255, 255);"
+      />
+      <input type="text" [(ngModel)]="startInSec" nz-input placeholder="SS" class="demo-input-right" />
+    </nz-input-group>
+    <div>
+      <button nz-button nzSize="small" nzType="primary" (click)="schedule()">Start</button>
+    </div>
+  </div>
+</div>

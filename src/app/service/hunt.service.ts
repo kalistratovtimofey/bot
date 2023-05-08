@@ -24,9 +24,9 @@ export class HuntService extends AbstractCommandService{
   }
 
   protected updateSettings(): void {
-    this.isHardmode = this.settings.getAdvSettings().useHardmode;
-    this.needHealing = this.settings.getAdvSettings().useHeal;
-    this.enabled = this.settings.getAdvSettings().enabled;
+    this.isHardmode = this.settings.getHuntSettings().useHardmode;
+    this.needHealing = this.settings.getHuntSettings().useHeal;
+    this.enabled = this.settings.getHuntSettings().enabled;
   }
 
   protected filterMessages(messages: Observable<DiscordMessage>): Observable<DiscordMessage> {

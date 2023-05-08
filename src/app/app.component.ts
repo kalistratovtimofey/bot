@@ -27,7 +27,6 @@ export class AppComponent implements OnInit{
     private reader: DiscordReaderService,
     api: DiscordApiService
   ) {
-    api.read(20).subscribe(messages => console.log(messages));
   }
 
   ngOnInit(): void {

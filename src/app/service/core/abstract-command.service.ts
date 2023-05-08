@@ -12,7 +12,7 @@ import {DiscordMessage} from "./model/discord-message";
 export abstract class AbstractCommandService {
 
   protected enabled = true;
-  protected timer = 0;
+  timer = 0;
   private fireAt = 0;
   private subscription: Subscription | null = null;
   private message = new Subject<DiscordMessage>();
@@ -22,9 +22,7 @@ export abstract class AbstractCommandService {
   timeToFire$ = this.timeToFire.asObservable();
 
   constructor(private reader: DiscordReaderService, protected writer: DiscordWriterService, protected settings: SettingsService) {
-    interval(1000).pipe(
-      filter(_ => this.fireAt > 0 && this.fireAt < Date.now())
-    ).subscribe( _ => {
+    interval(1000).subscribe( _ => {
       if (this.fireAt === 0) {
         return;
       }
@@ -39,6 +37,17 @@ export abstract class AbstractCommandService {
     );
   }
 
+  startIn(time: number) {
+    this.updateSettings();
+    if (!this.enabled) {
+      console.log('disabled');
+      return;
+    }
+
+    this.initListener();
+    this.fireAt = Date.now() + time;
+  }
+
   start() {
     this.updateSettings();
     if (!this.enabled) {
@@ -46,18 +55,21 @@ export abstract class AbstractCommandService {
       return;
     }
 
+    this.initListener();
+    this.fireCommand();
+  }
+
+  private initListener() {
     if (!this.subscription) {
       this. subscription = this.filterMessages(this.reader.myBotMessages)
         .subscribe(
-        message => {
-          this.message.next(message);
-          this.processMessage(message.content);
-          this.fireAt = Date.now() + this.timer;
-        }
-      )
+          message => {
+            this.message.next(message);
+            this.processMessage(message.content);
+            this.fireAt = Date.now() + this.timer;
+          }
+        )
     }
-
-    this.fireCommand();
   }
 
   protected abstract updateSettings(): void;

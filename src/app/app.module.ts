@@ -21,6 +21,9 @@ import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzCardModule} from "ng-zorro-antd/card";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzSelectModule} from "ng-zorro-antd/select";
+import { TimerComponent } from './components/timer/timer.component';
+import {NzProgressModule} from "ng-zorro-antd/progress";
+import {NzGridModule} from "ng-zorro-antd/grid";
 
 registerLocaleData(en);
 
@@ -31,7 +34,8 @@ registerLocaleData(en);
     HuntComponent,
     FarmComponent,
     WorkComponent,
-    TrainComponent
+    TrainComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ registerLocaleData(en);
     NzDividerModule,
     NzCardModule,
     NzInputModule,
-    NzSelectModule
+    NzSelectModule,
+    NzProgressModule,
+    NzGridModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

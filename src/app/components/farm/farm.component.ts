@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {SettingsService} from "../../service/core/settings.service";
+import {FarmService} from "../../service/farm.service";
 
 @Component({
   selector: 'app-farm',
@@ -11,7 +12,7 @@ export class FarmComponent {
   enabled = this.settings.getFarmSettings().enabled;
   suffix = this.settings.getFarmSettings().type;
 
-  constructor(private settings: SettingsService) {
+  constructor(private settings: SettingsService, public farmService: FarmService) {
   }
 
   update() {
