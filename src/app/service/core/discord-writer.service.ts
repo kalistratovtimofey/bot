@@ -12,7 +12,7 @@ export class DiscordWriterService {
   _pushEvent = new Subject<void>();
 
   constructor(private api: DiscordApiService, private stopper: AntibotStopperService) {
-    combineLatest([this.stopper.isAllowed$, interval(1000)])
+    combineLatest([this.stopper.isAllowed$, interval(1100)])
       .subscribe(([isAllowed]) => {
         if (isAllowed) {
           const message = this.messageQueue.pop();

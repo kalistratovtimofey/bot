@@ -1,46 +1,24 @@
 import { Injectable } from '@angular/core';
-import {Subscription, timer} from "rxjs";
-import {DiscordReaderService} from "./core/discord-reader.service";
-import {DiscordWriterService} from "./core/discord-writer.service";
+import {Observable} from "rxjs";
 import {filter} from "rxjs/operators";
-import {SettingsService} from "./core/settings.service";
+import {DiscordMessage} from "./core/model/discord-message";
+import {AbstractCommandService} from "./core/abstract-command.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class TrainService {
+export class TrainService extends AbstractCommandService{
 
-  private subscription: Subscription | null = null;
-  private timer: Subscription | null = null;
-  private trainTime = 15 * 60 * 1000;
+  override timer = 15 * 60 * 1000 + 1000;
 
-
-  constructor(private reader: DiscordReaderService, private writer: DiscordWriterService, private settings: SettingsService) { }
-
-  start() {
-    if (!this.settings.getTrainSettings().enabled) {
-      return;
-    }
-
-    if (!this.subscription) {
-      this. subscription = this.reader.myBotMessages.pipe(
-        filter(message => message.content.includes('is training '))
-      ).subscribe(
-        message => {
-          this.timer = timer(this.trainTime).subscribe(_ => this.post());
-          this.solveTraining(message.content);
-        }
-      )
-    }
-    this.post();
-  }
-
-  private post() {
+  protected fireCommand() {
     this.writer.pushMessage('rpg tr ');
   }
 
-  private solveTraining(text: string) {
+  protected processMessage(text: string) {
+    console.log('solving training ', text);
     if (text.includes('casino')) {
+      console.log('casino training');
       const pairs: Record<string, string> = {
         'diamond' : ':gem:',
         'gift': ':gift:',
@@ -62,6 +40,7 @@ export class TrainService {
     }
 
     if (text.includes('river')) {
+      console.log('river training');
       if (text.toLowerCase().includes(':epicfish:')) {
         this.writer.pushReaction('3');
       }
@@ -74,10 +53,12 @@ export class TrainService {
     }
 
     if (text.includes('mine')) {
+      console.log('mine training');
       this.writer.pushReaction('no');
     }
 
     if (text.includes('field')) {
+      console.log('field training');
       const word = text.toLowerCase().includes('apple') ? 'apple' : 'banana';
       if (text.includes('first')) {
         this.writer.pushReaction(word[0]);
@@ -100,10 +81,21 @@ export class TrainService {
     }
 
     if (text.includes('forest')) {
+      console.log('forest training');
       const regex = /how many <:([a-z]+):/;
-      const item = text.match(regex)![1];
+      const item = text.toLowerCase().match(regex)![1];
       const count = text.split(item).length - 2;
       this.writer.pushReaction(String(count));
     }
+  }
+
+  protected updateSettings(): void {
+    this.enabled = this.settings.getTrainSettings().enabled
+  }
+
+  protected filterMessages(messages: Observable<DiscordMessage>): Observable<DiscordMessage> {
+    return messages.pipe(
+      filter(message => message.content.includes('is training '))
+    );
   }
 }

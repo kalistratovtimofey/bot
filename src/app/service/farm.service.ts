@@ -1,40 +1,32 @@
 import { Injectable } from '@angular/core';
-import {Subscription, timer} from "rxjs";
-import {DiscordReaderService} from "./core/discord-reader.service";
-import {DiscordWriterService} from "./core/discord-writer.service";
+import {Observable} from "rxjs";
 import {filter} from "rxjs/operators";
-import {SettingsService} from "./core/settings.service";
+import {DiscordMessage} from "./core/model/discord-message";
+import {AbstractCommandService} from "./core/abstract-command.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class FarmService {
+export class FarmService extends AbstractCommandService{
 
-  private subscription: Subscription | null = null;
-  private timer: Subscription | null = null;
-  private farmTime = 10 * 60 * 1000;
+  override timer = 10 * 60 * 1000 + 1000;
   private farmType = '';
 
-  constructor(private reader: DiscordReaderService, private writer: DiscordWriterService, private settings: SettingsService) { }
-
-  start() {
-    if (!this.settings.getFarmSettings().enabled) {
-      return;
-    }
+  protected updateSettings(): void {
+    this.enabled = this.settings.getFarmSettings().enabled
     this.farmType = this.settings.getFarmSettings().type;
-    if (!this.subscription) {
-      this. subscription = this.reader.myBotMessages.pipe(
-        filter(message => message.content.includes('plants '))
-      ).subscribe(
-        message => {
-          this.timer = timer(this.farmTime).subscribe(_ => this.post());
-        }
-      )
-    }
-    this.post();
+  }
+  protected filterMessages(messages: Observable<DiscordMessage>): Observable<DiscordMessage> {
+    return messages.pipe(
+      filter(message => message.content.includes('plants '))
+    );
   }
 
-  private post() {
+  protected processMessage(text: string): void {
+
+  }
+
+  protected fireCommand() {
     this.writer.pushMessage('rpg farm ' + this.farmType);
   }
 }
