@@ -1,0 +1,11 @@
+<nz-modal
+  [nzVisible]="!(antibot.isAllowed$ | async)"
+  nzTitle="ALARM!! POLICE!!"
+  [nzFooter]="footer"
+>
+  <p *nzModalContent>
+    Check your discord ASAP!!
+  </p>
+</nz-modal>
+
+<ng-template #footer></ng-template>

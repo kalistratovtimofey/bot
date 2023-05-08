@@ -24,6 +24,8 @@ import {NzSelectModule} from "ng-zorro-antd/select";
 import { TimerComponent } from './components/timer/timer.component';
 import {NzProgressModule} from "ng-zorro-antd/progress";
 import {NzGridModule} from "ng-zorro-antd/grid";
+import { AlarmComponent } from './components/alarm/alarm.component';
+import {NzModalModule} from "ng-zorro-antd/modal";
 
 registerLocaleData(en);
 
@@ -35,7 +37,8 @@ registerLocaleData(en);
     FarmComponent,
     WorkComponent,
     TrainComponent,
-    TimerComponent
+    TimerComponent,
+    AlarmComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ registerLocaleData(en);
     NzInputModule,
     NzSelectModule,
     NzProgressModule,
-    NzGridModule
+    NzGridModule,
+    NzModalModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
