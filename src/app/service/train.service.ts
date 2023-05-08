@@ -84,7 +84,7 @@ export class TrainService extends AbstractCommandService{
       console.log('forest training');
       const regex = /how many <:([a-z]+):/;
       const item = text.toLowerCase().match(regex)![1];
-      const count = text.split(item).length - 2;
+      const count = text.toLowerCase().split(item).length - 2;
       this.writer.pushReaction(String(count));
     }
   }
