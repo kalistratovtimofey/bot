@@ -35,7 +35,7 @@ export class AdvService extends AbstractCommandService{
   }
 
   private isAdventureMessage(text: string) {
-    for (const monster in adventureMonsters) {
+    for (const monster of adventureMonsters) {
       if (text.includes('**' + monster.toUpperCase() + '**')) {
         return true;
       }

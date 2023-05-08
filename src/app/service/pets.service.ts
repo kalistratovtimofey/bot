@@ -21,10 +21,11 @@ export class PetsService {
 
     if (!this.subscription) {
       this. subscription = this.reader.myBotMessages.pipe(
-        map(message => message.embeds?.[0].fields?.[0].value),
+        map(message => message.embeds?.[0]?.fields?.[0].value),
         filter(message => !!message)
       ).subscribe(
         message => {
+          console.log('try to catch pet', message)
           const happinessRegex = /happiness\*\*: ([0-9]+)/;
           const hungerRegex = /hunger\*\*: ([0-9]+)/;
           const happiness = +message!.toLowerCase().match(happinessRegex)![1];

@@ -28,7 +28,10 @@ export class DiscordReaderService {
   }
 
   private isMyRichMessage(message: DiscordMessage): boolean {
-    const field = message.embeds?.[0].fields?.[0];
+    if (message.embeds) {
+      console.log('possibly rich message', message);
+    }
+    const field = message.embeds?.[0]?.fields?.[0];
     return !!field && field.name.includes(this.settings.getPlayerId()!);
   }
 }

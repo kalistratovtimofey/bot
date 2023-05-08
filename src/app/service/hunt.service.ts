@@ -15,7 +15,7 @@ export class HuntService extends AbstractCommandService{
   private needHealing = false;
 
   private isNotAdventureMessage(text: string) {
-    for (const monster in adventureMonsters) {
+    for (const monster of adventureMonsters) {
       if (text.includes('**' + monster.toUpperCase() + '**')) {
         return false;
       }

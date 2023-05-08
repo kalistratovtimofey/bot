@@ -14,7 +14,7 @@ export class WorkService extends AbstractCommandService{
 
   private isWorkCommandResult(text: string): boolean {
     return text.includes('is chopping') || text.includes('is fishing') || text.includes('is collection') || text.includes('is mining')
-    || text.indexOf('**' + this.settings.getPlayerName() + '** found') === 0;
+    || text.indexOf('**' + this.settings.getPlayerName() + '** got') === 0;
   }
 
   protected updateSettings(): void {
