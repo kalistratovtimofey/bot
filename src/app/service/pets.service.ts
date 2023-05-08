@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Subscription, timer} from "rxjs";
+import {BehaviorSubject, Subscription, timer} from "rxjs";
 import {DiscordReaderService} from "./core/discord-reader.service";
 import {DiscordWriterService} from "./core/discord-writer.service";
 import {filter, map} from "rxjs/operators";
 import {SettingsService} from "./core/settings.service";
+import {message} from "./core/model/mock";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class PetsService {
     }
 
     if (!this.subscription) {
-      this. subscription = this.reader.myBotMessages.pipe(
+      this. subscription = this.reader.myRichMessages
+        .pipe(
         map(message => message.embeds?.[0]?.fields?.[0].value),
         filter(message => !!message)
       ).subscribe(
