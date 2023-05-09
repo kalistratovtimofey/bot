@@ -40,7 +40,6 @@ export abstract class AbstractCommandService {
   startIn(time: number) {
     this.updateSettings();
     if (!this.enabled) {
-      console.log('disabled');
       return;
     }
 

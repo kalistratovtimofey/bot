@@ -12,9 +12,14 @@ export interface DiscordMessage {
 
 interface Embed {
   fields?: EmbedField[];
+  author?: EmbedAuthor
 }
 
 interface EmbedField {
   name: string;
   value: string;
+}
+
+interface EmbedAuthor {
+  name: string;
 }
