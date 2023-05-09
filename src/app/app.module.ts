@@ -26,6 +26,7 @@ import {NzProgressModule} from "ng-zorro-antd/progress";
 import {NzGridModule} from "ng-zorro-antd/grid";
 import { AlarmComponent } from './components/alarm/alarm.component';
 import {NzModalModule} from "ng-zorro-antd/modal";
+import { EventsComponent } from './components/events/events.component';
 
 registerLocaleData(en);
 
@@ -38,7 +39,8 @@ registerLocaleData(en);
     WorkComponent,
     TrainComponent,
     TimerComponent,
-    AlarmComponent
+    AlarmComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,

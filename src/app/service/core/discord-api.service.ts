@@ -21,7 +21,12 @@ export class DiscordApiService {
   }
 
   write(message: string): void {
-    const url = 'https://discord.com/api/v9/channels/'+this.settings.getChannelId()+'/messages';
+    this.writeToChannel(this.settings.getChannelId(), message);
+  }
+
+  writeToChannel(channelId: string, message: string) {
+    console.log('writing to channel', channelId, message);
+    const url = 'https://discord.com/api/v9/channels/'+channelId+'/messages';
     this.client.post(url, {
       content: message,
       flags: 0,

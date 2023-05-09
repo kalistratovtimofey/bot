@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DiscordApiService} from "./service/core/discord-api.service";
 import {DiscordReaderService} from "./service/core/discord-reader.service";
 import {StartService} from "./service/start.service";
+import {CustomEventsService} from "./custom-events.service";
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent implements OnInit{
   constructor(
     private startService: StartService,
     private reader: DiscordReaderService,
+    private customEventService: CustomEventsService,
     api: DiscordApiService
   ) {
     // api.read(30).subscribe(messages => console.log(messages));
@@ -25,6 +27,7 @@ export class AppComponent implements OnInit{
 
   start() {
     this.startService.start();
+    this.customEventService.start();
   }
 
 

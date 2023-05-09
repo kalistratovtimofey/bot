@@ -45,14 +45,12 @@ export class StartService {
       filter(message => this.isCooldownMessage(message)),
       map(message => message.embeds?.[0]!)
     ).subscribe(embed => {
-      console.log('got cd', embed);
       for (const field of embed.fields!) {
         for (const line of field.value.split("\n")) {
           for(const serviceName in this.services) {
             if (line.includes(serviceName)) {
               const service = this.services[serviceName];
               if (line.includes('white_check_mark')) {
-                console.log(line);
                 service.start();
               } else {
                 // ~-~ **`lootbox`** (**0h 46m 50s**)
@@ -72,7 +70,6 @@ export class StartService {
   }
 
   private isCooldownMessage(message: DiscordMessage): boolean {
-    console.log('checking message', message);
     const embed = message.embeds?.[0];
     return embed?.author?.name === this.settings.getPlayerName() + ' — cooldowns';
   }

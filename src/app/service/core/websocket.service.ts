@@ -5,6 +5,8 @@ import {webSocket, WebSocketSubject} from "rxjs/webSocket";
 import {SettingsService} from "./settings.service";
 import {DiscordMessage} from "./model/discord-message";
 
+const BOT_ID = "555955826880413696";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +16,9 @@ export class WebsocketService {
 
   private messages: Subject<DiscordMessage> = new Subject<DiscordMessage>();
   public messages$ = this.messages.asObservable();
+
+  private allBotMessages: Subject<DiscordMessage> = new Subject<DiscordMessage>();
+  allBotMessages$ = this.allBotMessages.asObservable();
 
   constructor(private settings: SettingsService) {
     this.connect();
@@ -47,6 +52,11 @@ export class WebsocketService {
       tap(msg => this.updateMessageid(msg)),
       filter(msg => this.isCreateMessage(msg)),
       map((msg: any) => msg.d as DiscordMessage),
+      tap(message => {
+        if (message.author.id === BOT_ID) {
+          this.allBotMessages.next(message);
+        }
+      }),
       filter(message => !!message.channel_id && message.channel_id === this.settings.getChannelId())
     ).subscribe(
       msg=> this.messages.next(msg)

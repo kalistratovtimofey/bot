@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {FarmSettings, HuntSettings, Settings, TrainSettings, WorkSettings} from "./model/settings";
+import {EventsSettings, FarmSettings, HuntSettings, Settings, TrainSettings, WorkSettings} from "./model/settings";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,17 @@ export class SettingsService {
     const storedSettings = localStorage.getItem('settings');
     if (storedSettings) {
       this.settings = JSON.parse(storedSettings);
+      if (!this.settings.events) {
+        this.settings.events = {
+          lure: false,
+          cut: false,
+          catch: false,
+          summon: false,
+          boss: false,
+          arena: false,
+          wait: 1500,
+        };
+      }
     } else {
       this.settings = {
         token: '',
@@ -51,6 +62,15 @@ export class SettingsService {
         train: {
           enabled: true,
           enabledPetCapture: true,
+        },
+        events: {
+          lure: false,
+          cut: false,
+          catch: false,
+          summon: false,
+          boss: false,
+          arena: false,
+          wait: 1500,
         }
       };
     }
@@ -95,6 +115,10 @@ export class SettingsService {
   getTrainSettings(): TrainSettings {
     return this.settings.train;
   }
+
+  getEventsSettings(): EventsSettings {
+    return this.settings.events;
+}
 
   setSettings(settings: Partial<Settings>): void {
     this.settings = { ...this.settings, ...settings};

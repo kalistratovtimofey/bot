@@ -14,6 +14,8 @@ export interface Settings {
   farm: FarmSettings
 
   train: TrainSettings
+
+  events: EventsSettings
 }
 
 export interface HuntSettings {
@@ -35,4 +37,14 @@ export interface FarmSettings {
 export interface TrainSettings {
   enabled: boolean;
   enabledPetCapture: boolean
+}
+
+export interface EventsSettings {
+  lure: boolean;
+  cut: boolean;
+  catch: boolean;
+  summon: boolean;
+  boss: boolean;
+  arena: boolean;
+  wait: number;
 }

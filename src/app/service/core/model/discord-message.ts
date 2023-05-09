@@ -7,7 +7,7 @@ export interface DiscordMessage {
   timestamp: string;
   application_id?: string;
   channel_id?: string;
-  embeds?: Embed[];
+  embeds: Embed[];
 }
 
 interface Embed {
