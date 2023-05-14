@@ -41,7 +41,7 @@ export class CustomEventsService {
     if (event.includes('lootbox summoning') && this.settingsService.getEventsSettings().summon) {
       this.fireMessage(message.channel_id!, 'summon', 'popular');
     }
-    if (event.includes('legendary boss') && this.settingsService.getEventsSettings().boss) {
+    if (event.includes('legendary boss just spawned') && this.settingsService.getEventsSettings().boss) {
       this.fireMessage(message.channel_id!, 'time to fight', 'popular');
     }
     if (event.includes('the arena') && this.settingsService.getEventsSettings().arena) {
