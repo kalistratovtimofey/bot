@@ -29,28 +29,27 @@ export class CustomEventsService {
     if (!event) {
       return;
     }
-    if (event.includes('a megalodon') && this.settingsService.getEventsSettings().lure) {
-      this.fireMessage(message.channel_id!, 'lure', 'simple');
+    if (event.includes('a megalodon') && this.settingsService.getEventsSettings().lure.enabled) {
+      this.fireMessage(message.channel_id!, 'lure', this.settingsService.getEventsSettings().lure.timer);
     }
-    if (event.includes('an epic tree') && this.settingsService.getEventsSettings().cut) {
-      this.fireMessage(message.channel_id!, 'cut', 'simple');
+    if (event.includes('an epic tree') && this.settingsService.getEventsSettings().cut.enabled) {
+      this.fireMessage(message.channel_id!, 'cut', this.settingsService.getEventsSettings().cut.timer);
     }
-    if (event.includes('raining coins') && this.settingsService.getEventsSettings().catch) {
-      this.fireMessage(message.channel_id!, 'catch', 'simple');
+    if (event.includes('raining coins') && this.settingsService.getEventsSettings().catch.enabled) {
+      this.fireMessage(message.channel_id!, 'catch', this.settingsService.getEventsSettings().catch.timer);
     }
-    if (event.includes('lootbox summoning') && this.settingsService.getEventsSettings().summon) {
-      this.fireMessage(message.channel_id!, 'summon', 'popular');
+    if (event.includes('lootbox summoning') && this.settingsService.getEventsSettings().summon.enabled) {
+      this.fireMessage(message.channel_id!, 'summon', this.settingsService.getEventsSettings().summon.timer);
     }
-    if (event.includes('legendary boss just spawned') && this.settingsService.getEventsSettings().boss) {
-      this.fireMessage(message.channel_id!, 'time to fight', 'popular');
+    if (event.includes('legendary boss just spawned') && this.settingsService.getEventsSettings().boss.enabled) {
+      this.fireMessage(message.channel_id!, 'time to fight', this.settingsService.getEventsSettings().boss.timer);
     }
-    if (event.includes('the arena') && this.settingsService.getEventsSettings().arena) {
-      this.fireMessage(message.channel_id!, 'join', 'popular');
+    if (event.includes('the arena') && this.settingsService.getEventsSettings().arena.enabled) {
+      this.fireMessage(message.channel_id!, 'join', this.settingsService.getEventsSettings().arena.timer);
     }
   }
 
-  private fireMessage(channelId: string, message: string, type: 'simple'|'popular') {
-    const wait = type === 'simple' ? this.settingsService.getEventsSettings().waitSimple : this.settingsService.getEventsSettings().wait;
+  private fireMessage(channelId: string, message: string, wait: number) {
     timer(wait).pipe(
       withLatestFrom(this.antiGuard.isAllowed$),
       filter(([_, isAllowed]) => isAllowed)

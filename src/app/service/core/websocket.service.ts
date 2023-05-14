@@ -4,6 +4,7 @@ import {filter, map, tap} from "rxjs/operators";
 import {webSocket, WebSocketSubject} from "rxjs/webSocket";
 import {SettingsService} from "./settings.service";
 import {DiscordMessage} from "./model/discord-message";
+import {message} from "./model/mock";
 
 const BOT_ID = "555955826880413696";
 
@@ -63,6 +64,11 @@ export class WebsocketService {
     );
 
     this.subject?.subscribe({complete: () => this.connect()})
+    // setTimeout(() => {
+    //   this.messages.next(message);
+    //   console.log('pushed test message', message);
+    // }, 5000);
+
   }
 
   private isCreateMessage(msg: unknown): boolean {

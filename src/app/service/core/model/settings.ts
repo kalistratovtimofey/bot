@@ -4,6 +4,7 @@ export interface Settings {
   playerId: string;
   channelId: string;
   botName: string;
+  timeout: number;
 
   hunt: HuntSettings
 
@@ -15,7 +16,7 @@ export interface Settings {
 
   train: TrainSettings
 
-  events: EventsSettings
+  randomEvents: EventsSettings
 
   enchant: EnchantSettings
 }
@@ -42,14 +43,17 @@ export interface TrainSettings {
 }
 
 export interface EventsSettings {
-  lure: boolean;
-  cut: boolean;
-  catch: boolean;
-  summon: boolean;
-  boss: boolean;
-  arena: boolean;
-  wait: number;
-  waitSimple: number;
+  lure: EventSetting;
+  cut: EventSetting;
+  catch: EventSetting;
+  summon: EventSetting;
+  boss: EventSetting;
+  arena: EventSetting;
+}
+
+export interface EventSetting {
+  enabled: boolean;
+  timer: number
 }
 
 

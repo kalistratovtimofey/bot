@@ -22,16 +22,32 @@ export class SettingsService {
     if (storedSettings) {
       this.settings = JSON.parse(storedSettings);
       // backport compatibility
-      if (!this.settings.events) {
-        this.settings.events = {
-          lure: false,
-          cut: false,
-          catch: false,
-          summon: false,
-          boss: false,
-          arena: false,
-          wait: 1500,
-          waitSimple: 2500,
+      if (!this.settings.randomEvents) {
+        this.settings.randomEvents = {
+          lure: {
+            enabled: false,
+              timer: 1500,
+          },
+          cut: {
+            enabled: false,
+              timer: 1500,
+          },
+          catch: {
+            enabled: false,
+              timer: 1500,
+          },
+          summon: {
+            enabled: false,
+              timer: 1500,
+          },
+          boss: {
+            enabled: false,
+              timer: 1500,
+          },
+          arena: {
+            enabled: false,
+              timer: 1500,
+          },
         };
       }
       if (!this.settings.enchant) {
@@ -40,6 +56,9 @@ export class SettingsService {
           value: EnchantValues.epic,
         };
       }
+      if (!this.settings.timeout) {
+        this.settings.timeout = 1100;
+      }
     } else {
       this.settings = {
         token: '',
@@ -47,6 +66,7 @@ export class SettingsService {
         playerId: '',
         channelId: '',
         botName: 'EPIC RPG',
+        timeout: 11100,
 
         hunt: {
           enabled: true,
@@ -74,15 +94,31 @@ export class SettingsService {
           enabled: true,
           enabledPetCapture: true,
         },
-        events: {
-          lure: false,
-          cut: false,
-          catch: false,
-          summon: false,
-          boss: false,
-          arena: false,
-          wait: 1500,
-          waitSimple: 2500,
+        randomEvents: {
+          lure: {
+            enabled: false,
+            timer: 1500,
+          },
+          cut: {
+            enabled: false,
+            timer: 1500,
+          },
+          catch: {
+            enabled: false,
+            timer: 1500,
+          },
+          summon: {
+            enabled: false,
+            timer: 1500,
+          },
+          boss: {
+            enabled: false,
+            timer: 1500,
+          },
+          arena: {
+            enabled: false,
+            timer: 1500,
+          },
         },
         enchant: {
           command: 'enchant',
@@ -112,6 +148,10 @@ export class SettingsService {
     return this.settings.botName;
   }
 
+  getTimeout(): number {
+    return this.settings.timeout;
+  }
+
   getHuntSettings(): HuntSettings {
     return this.settings.hunt;
   }
@@ -133,7 +173,7 @@ export class SettingsService {
   }
 
   getEventsSettings(): EventsSettings {
-    return this.settings.events;
+    return this.settings.randomEvents;
 }
 
 getEnchantSettings(): EnchantSettings {

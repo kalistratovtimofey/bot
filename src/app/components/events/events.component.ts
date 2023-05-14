@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {SettingsService} from "../../service/core/settings.service";
+import {CustomEventsService} from "../../service/custom-events.service";
+import {EventsSettings} from "../../service/core/model/settings";
 
 @Component({
   selector: 'app-events',
@@ -8,31 +10,27 @@ import {SettingsService} from "../../service/core/settings.service";
 })
 export class EventsComponent {
 
-  cut = this.settings.getEventsSettings().cut;
-  lure = this.settings.getEventsSettings().lure;
-  summon = this.settings.getEventsSettings().summon;
-  boss = this.settings.getEventsSettings().boss;
-  catch = this.settings.getEventsSettings().catch;
-  arena = this.settings.getEventsSettings().arena;
-  wait = this.settings.getEventsSettings().wait;
-  waitSimple = this.settings.getEventsSettings().waitSimple;
+  settings = this.settingsService.getEventsSettings();
 
-  constructor(private settings: SettingsService) {
+  // cut = this.settings.getEventsSettings().cut;
+  // lure = this.settings.getEventsSettings().lure;
+  // summon = this.settings.getEventsSettings().summon;
+  // boss = this.settings.getEventsSettings().boss;
+  // catch = this.settings.getEventsSettings().catch;
+  // arena = this.settings.getEventsSettings().arena;
+
+
+  constructor(private settingsService: SettingsService) {
   }
 
   update() {
     setTimeout(() => {
-      this.settings.setSettings({events: {
-          cut: this.cut,
-          lure:this.lure,
-          catch: this.catch,
-          summon: this.summon,
-          boss: this.boss,
-          arena: this.arena,
-          wait: this.wait,
-          waitSimple: this.waitSimple,
-        }});
+      this.settingsService.setSettings({randomEvents: this.settings});
     }, 1)
+  }
+
+  keys() {
+    return Object.keys(this.settings);
   }
 
 }

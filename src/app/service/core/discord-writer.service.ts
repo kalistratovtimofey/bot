@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {DiscordApiService} from "./discord-api.service";
 import {combineLatest, interval, Subject, throttleTime} from "rxjs";
 import {AntibotStopperService} from "./antibot-stopper.service";
+import {SettingsService} from "./settings.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class DiscordWriterService {
   private messageQueue: string[] = [];
   _pushEvent = new Subject<void>();
 
-  constructor(private api: DiscordApiService, private stopper: AntibotStopperService) {
-    combineLatest([this.stopper.isAllowed$, interval(1300)])
+  constructor(private api: DiscordApiService, private stopper: AntibotStopperService, settings: SettingsService) {
+    combineLatest([this.stopper.isAllowed$, interval(settings.getTimeout())])
       .subscribe(([isAllowed]) => {
         if (isAllowed) {
           const message = this.messageQueue.shift();

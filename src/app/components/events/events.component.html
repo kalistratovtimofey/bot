@@ -1,20 +1,47 @@
 <nz-card nzTitle="Custom events (global)">
-  <div nz-row class="settings-wrapper ">
+  <div nz-row>
     <div nz-col nzSpan="12">
-      <label nz-checkbox [(ngModel)]="lure" (ngModelChange)="update()">lure</label>
-      <label nz-checkbox [(ngModel)]="cut" (ngModelChange)="update()">cut</label>
-      <label nz-checkbox [(ngModel)]="catch" (ngModelChange)="update()">catch</label>
-      <nz-input-group nzAddOnBefore="Wait before post for" nzAddOnAfter="ms">
-        <input nz-input placeholder="0" [(ngModel)]="waitSimple" (ngModelChange)="update()" />
-      </nz-input-group>
+      <div class="settings-wrapper">
+        <label nz-checkbox [(ngModel)]="settings.lure.enabled" (ngModelChange)="update()"></label>
+        <nz-input-group nzAddOnBefore="Lure" nzAddOnAfter="ms">
+          <nz-input-number [nzDisabled]="!settings.lure.enabled" [(ngModel)]="settings.lure.timer" [nzMin]="100" [nzMax]="10000" [nzStep]="100"></nz-input-number>
+        </nz-input-group>
+      </div>
+      <div class="settings-wrapper">
+        <label nz-checkbox [(ngModel)]="settings.cut.enabled" (ngModelChange)="update()"></label>
+        <nz-input-group nzAddOnBefore="Cut" nzAddOnAfter="ms">
+          <nz-input-number [nzDisabled]="!settings.cut.enabled" [(ngModel)]="settings.cut.timer" [nzMin]="100" [nzMax]="10000" [nzStep]="100"></nz-input-number>
+        </nz-input-group>
+      </div>
+      <div class="settings-wrapper">
+        <label nz-checkbox [(ngModel)]="settings.catch.enabled" (ngModelChange)="update()"></label>
+        <nz-input-group nzAddOnBefore="Catch" nzAddOnAfter="ms">
+          <nz-input-number [nzDisabled]="!settings.catch.enabled" [(ngModel)]="settings.catch.timer" [nzMin]="100" [nzMax]="10000" [nzStep]="100"></nz-input-number>
+        </nz-input-group>
+      </div>
     </div>
     <div nz-col nzSpan="12">
-      <label nz-checkbox [(ngModel)]="boss" (ngModelChange)="update()">boss</label>
-      <label nz-checkbox [(ngModel)]="summon" (ngModelChange)="update()">summon</label>
-      <label nz-checkbox [(ngModel)]="arena" (ngModelChange)="update()">arena</label>
-      <nz-input-group nzAddOnBefore="Wait before post for" nzAddOnAfter="ms">
-        <input nz-input placeholder="0" [(ngModel)]="wait" (ngModelChange)="update()" />
-      </nz-input-group>
+      <div class="settings-wrapper">
+        <label nz-checkbox [(ngModel)]="settings.boss.enabled" (ngModelChange)="update()"></label>
+        <nz-input-group nzAddOnBefore="Boss" nzAddOnAfter="ms">
+          <nz-input-number [nzDisabled]="!settings.boss.enabled" [(ngModel)]="settings.boss.timer" [nzMin]="100" [nzMax]="10000" [nzStep]="100"></nz-input-number>
+        </nz-input-group>
+      </div>
+      <div class="settings-wrapper">
+        <label nz-checkbox [(ngModel)]="settings.summon.enabled" (ngModelChange)="update()"></label>
+        <nz-input-group nzAddOnBefore="Summon" nzAddOnAfter="ms">
+          <nz-input-number [nzDisabled]="!settings.summon.enabled" [(ngModel)]="settings.summon.timer" [nzMin]="100" [nzMax]="10000" [nzStep]="100"></nz-input-number>
+        </nz-input-group>
+      </div>
+      <div class="settings-wrapper">
+        <label nz-checkbox [(ngModel)]="settings.arena.enabled" (ngModelChange)="update()"></label>
+        <nz-input-group nzAddOnBefore="Arena" nzAddOnAfter="ms">
+          <nz-input-number [nzDisabled]="!settings.arena.enabled" [(ngModel)]="settings.arena.timer" [nzMin]="100" [nzMax]="10000" [nzStep]="100"></nz-input-number>
+        </nz-input-group>
+      </div>
     </div>
   </div>
 </nz-card>
+
+
+<!--<nz-input-number [(ngModel)]="demoValue" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>-->

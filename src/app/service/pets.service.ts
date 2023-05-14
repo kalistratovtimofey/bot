@@ -4,7 +4,6 @@ import {DiscordReaderService} from "./core/discord-reader.service";
 import {DiscordWriterService} from "./core/discord-writer.service";
 import {filter, map} from "rxjs/operators";
 import {SettingsService} from "./core/settings.service";
-import {message} from "./core/model/mock";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,7 @@ export class PetsService {
     }
 
     if (!this.subscription) {
-      this. subscription = this.reader.myBotMessages
+      this. subscription = this.reader.botRichMessages
         .pipe(
           filter(message => message.embeds?.[0]?.fields?.[0].name.includes(this.settings.getPlayerName()!) || false),
           map(message => message.embeds?.[0]?.fields?.[0].value),

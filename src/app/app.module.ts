@@ -29,6 +29,7 @@ import {NzModalModule} from "ng-zorro-antd/modal";
 import { EventsComponent } from './components/events/events.component';
 import { MovingComponent } from './components/moving/moving.component';
 import { EnchantComponent } from './components/enchant/enchant.component';
+import {NzInputNumberModule} from "ng-zorro-antd/input-number";
 
 registerLocaleData(en);
 
@@ -59,7 +60,8 @@ registerLocaleData(en);
     NzSelectModule,
     NzProgressModule,
     NzGridModule,
-    NzModalModule
+    NzModalModule,
+    NzInputNumberModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

@@ -13,6 +13,7 @@ export class SettingsComponent implements OnInit{
   playerName = this.settings.getPlayerName();
   playerId = this.settings.getPlayerId();
   botName = this.settings.getBotName();
+  timeout = this.settings.getTimeout();
 
   constructor(private settings: SettingsService) {
   }
@@ -39,6 +40,10 @@ export class SettingsComponent implements OnInit{
 
   updateBotName(botName: string): void {
     this.settings.setSettings({botName});
+  }
+
+  updateTimeout(timeout: number) {
+    this.settings.setSettings({timeout});
   }
 
 }

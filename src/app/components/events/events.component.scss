@@ -1,11 +1,13 @@
-.settings-wrapper>div {
+.settings-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  line-height: 40px;
-  padding: 0 12px;
+  align-items: center;
+  padding-bottom: 10px;
 }
 
-.settings-wrapper>div:first-child {
-  border-right: 1px solid rgba(0,0,0,.06)
+.settings-wrapper nz-input-group {
+  width: unset;
+}
+
+.settings-wrapper label {
+  line-height: 32px;
 }

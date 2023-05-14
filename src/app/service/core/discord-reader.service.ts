@@ -23,7 +23,7 @@ export class DiscordReaderService {
 
     this.botRichMessages = this.ws.messages$.pipe(
       filter(message => message.author.username === this.botUsername),
-      filter(message => message.content === '' && message.embeds.length > 0)
+      filter(message => message.content === '' && message.embeds.length > 0),
     )
   }
 }
