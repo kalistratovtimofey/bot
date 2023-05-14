@@ -66,6 +66,7 @@ export class StartService {
     });
 
     this.writer.pushMessage('rpg cd');
+    this.writer.pushMessage('rpg guild raid');
     this.petsServie.start();
   }
 
