@@ -12,6 +12,7 @@ import {PetsService} from "./pets.service";
 import {AbstractCommandService} from "./core/abstract-command.service";
 import * as moment from 'moment';
 import {DiscordWriterService} from "./core/discord-writer.service";
+import {DiscordReaderService} from "./core/discord-reader.service";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class StartService {
   };
 
   constructor(
-    private websocket: WebsocketService,
+    private reader: DiscordReaderService,
     private writer: DiscordWriterService,
     private settings: SettingsService,
     private trainService: TrainService,
@@ -35,13 +36,12 @@ export class StartService {
     private advService: AdvService,
     private farmService: FarmService,
     private workService: WorkService,
-    private petsServie: PetsService,
+    private petsService: PetsService,
   ) { }
 
   start() {
-    this.websocket.messages$
+    this.reader.botRichMessages
     .pipe(
-      filter(message => message.author.username === this.settings.getBotName()),
       filter(message => this.isCooldownMessage(message)),
       map(message => message.embeds?.[0]!)
     ).subscribe(embed => {
@@ -53,6 +53,7 @@ export class StartService {
               if (line.includes('white_check_mark')) {
                 service.start();
               } else {
+                //example of string:
                 // ~-~ **`lootbox`** (**0h 46m 50s**)
                 const regex = /\(\*\*(.*)\*\*\)/;
                 const timeString = line.match(regex)![1];
@@ -67,7 +68,7 @@ export class StartService {
 
     this.writer.pushMessage('rpg cd');
     this.writer.pushMessage('rpg guild raid');
-    this.petsServie.start();
+    this.petsService.start();
   }
 
   private isCooldownMessage(message: DiscordMessage): boolean {
