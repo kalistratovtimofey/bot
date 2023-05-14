@@ -18,7 +18,7 @@ export class AppComponent implements OnInit{
     private customEventService: CustomEventsService,
     api: DiscordApiService
   ) {
-    // api.read(30).subscribe(messages => console.log(messages));
+    api.read(30).subscribe(messages => console.log(messages));
   }
 
   ngOnInit(): void {
