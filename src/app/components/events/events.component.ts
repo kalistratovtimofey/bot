@@ -15,6 +15,7 @@ export class EventsComponent {
   catch = this.settings.getEventsSettings().catch;
   arena = this.settings.getEventsSettings().arena;
   wait = this.settings.getEventsSettings().wait;
+  waitSimple = this.settings.getEventsSettings().waitSimple;
 
   constructor(private settings: SettingsService) {
   }
@@ -28,7 +29,8 @@ export class EventsComponent {
           summon: this.summon,
           boss: this.boss,
           arena: this.arena,
-          wait: this.wait
+          wait: this.wait,
+          waitSimple: this.waitSimple,
         }});
     }, 1)
   }

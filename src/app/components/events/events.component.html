@@ -1,13 +1,20 @@
 <nz-card nzTitle="Custom events (global)">
-  <div class="settings-wrapper">
-    <label nz-checkbox [(ngModel)]="lure" (ngModelChange)="update()">lure</label>
-    <label nz-checkbox [(ngModel)]="cut" (ngModelChange)="update()">cut</label>
-    <label nz-checkbox [(ngModel)]="catch" (ngModelChange)="update()">catch</label>
-    <label nz-checkbox [(ngModel)]="boss" (ngModelChange)="update()">boss</label>
-    <label nz-checkbox [(ngModel)]="summon" (ngModelChange)="update()">summon</label>
-    <label nz-checkbox [(ngModel)]="arena" (ngModelChange)="update()">arena</label>
-    <nz-input-group nzAddOnBefore="Wait before post for" nzAddOnAfter="ms">
-      <input nz-input placeholder="0" [(ngModel)]="wait" (ngModelChange)="update()" />
-    </nz-input-group>
+  <div nz-row class="settings-wrapper ">
+    <div nz-col nzSpan="12">
+      <label nz-checkbox [(ngModel)]="lure" (ngModelChange)="update()">lure</label>
+      <label nz-checkbox [(ngModel)]="cut" (ngModelChange)="update()">cut</label>
+      <label nz-checkbox [(ngModel)]="catch" (ngModelChange)="update()">catch</label>
+      <nz-input-group nzAddOnBefore="Wait before post for" nzAddOnAfter="ms">
+        <input nz-input placeholder="0" [(ngModel)]="waitSimple" (ngModelChange)="update()" />
+      </nz-input-group>
+    </div>
+    <div nz-col nzSpan="12">
+      <label nz-checkbox [(ngModel)]="boss" (ngModelChange)="update()">boss</label>
+      <label nz-checkbox [(ngModel)]="summon" (ngModelChange)="update()">summon</label>
+      <label nz-checkbox [(ngModel)]="arena" (ngModelChange)="update()">arena</label>
+      <nz-input-group nzAddOnBefore="Wait before post for" nzAddOnAfter="ms">
+        <input nz-input placeholder="0" [(ngModel)]="wait" (ngModelChange)="update()" />
+      </nz-input-group>
+    </div>
   </div>
 </nz-card>

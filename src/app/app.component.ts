@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DiscordApiService} from "./service/core/discord-api.service";
 import {DiscordReaderService} from "./service/core/discord-reader.service";
 import {StartService} from "./service/start.service";
-import {CustomEventsService} from "./custom-events.service";
+import {CustomEventsService} from "./service/custom-events.service";
 
 @Component({
   selector: 'app-root',

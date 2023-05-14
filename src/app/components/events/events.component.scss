@@ -1,6 +1,11 @@
-.settings-wrapper {
+.settings-wrapper>div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   line-height: 40px;
+  padding: 0 12px;
+}
+
+.settings-wrapper>div:first-child {
+  border-right: 1px solid rgba(0,0,0,.06)
 }

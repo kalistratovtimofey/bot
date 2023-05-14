@@ -47,4 +47,5 @@ export interface EventsSettings {
   boss: boolean;
   arena: boolean;
   wait: number;
+  waitSimple: number;
 }

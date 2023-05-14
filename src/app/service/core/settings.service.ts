@@ -27,6 +27,7 @@ export class SettingsService {
           boss: false,
           arena: false,
           wait: 1500,
+          waitSimple: 2500,
         };
       }
     } else {
@@ -71,6 +72,7 @@ export class SettingsService {
           boss: false,
           arena: false,
           wait: 1500,
+          waitSimple: 2500,
         }
       };
     }
