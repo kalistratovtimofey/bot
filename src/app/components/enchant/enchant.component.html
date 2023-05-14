@@ -1,0 +1,29 @@
+<nz-card nzTitle="Enchant" >
+  <nz-select [(ngModel)]="command" (ngModelChange)="update()">
+    <nz-option nzValue="enchant" nzLabel="enchant"></nz-option>
+    <nz-option nzValue="refine" nzLabel="refine"></nz-option>
+    <nz-option nzValue="transmute" nzLabel="transmute"></nz-option>
+    <nz-option nzValue="transcend" nzLabel="transcend"></nz-option>
+  </nz-select>
+  <nz-select [(ngModel)]="value" (ngModelChange)="update()">
+    <nz-option [nzValue]="EnchantValues.normie" nzLabel="normie"></nz-option>
+    <nz-option [nzValue]="EnchantValues.good" nzLabel="good"></nz-option>
+    <nz-option [nzValue]="EnchantValues.great" nzLabel="great"></nz-option>
+    <nz-option [nzValue]="EnchantValues.mega" nzLabel="mega"></nz-option>
+    <nz-option [nzValue]="EnchantValues.epic" nzLabel="epic"></nz-option>
+    <nz-option [nzValue]="EnchantValues.hyper" nzLabel="hyper"></nz-option>
+    <nz-option [nzValue]="EnchantValues.ultimate" nzLabel="ultimate"></nz-option>
+    <nz-option [nzValue]="EnchantValues.perfect" nzLabel="perfect"></nz-option>
+    <nz-option [nzValue]="EnchantValues.edgy" nzLabel="edgy"></nz-option>
+    <nz-option [nzValue]="EnchantValues['ultra-edgy']" nzLabel="ultra-edgy"></nz-option>
+    <nz-option [nzValue]="EnchantValues.omega" nzLabel="omega"></nz-option>
+    <nz-option [nzValue]="EnchantValues['ultra-omega']" nzLabel="ultra-omega"></nz-option>
+    <nz-option [nzValue]="EnchantValues.godly" nzLabel="godly"></nz-option>
+    <nz-option [nzValue]="EnchantValues.void" nzLabel="void"></nz-option>
+  </nz-select>
+  <nz-select [(ngModel)]="type" (ngModelChange)="update()">
+    <nz-option nzValue="sword" nzLabel="sword"></nz-option>
+    <nz-option nzValue="armor" nzLabel="armor"></nz-option>
+  </nz-select>
+  <button nz-button nzType="primary" (click)="start()">start</button>
+</nz-card>

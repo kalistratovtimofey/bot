@@ -16,6 +16,8 @@ export interface Settings {
   train: TrainSettings
 
   events: EventsSettings
+
+  enchant: EnchantSettings
 }
 
 export interface HuntSettings {
@@ -48,4 +50,27 @@ export interface EventsSettings {
   arena: boolean;
   wait: number;
   waitSimple: number;
+}
+
+
+export interface EnchantSettings {
+  value: EnchantValues,
+  command: 'enchant' | 'refine' | 'transmute' | 'transcend',
+}
+
+export enum EnchantValues {
+  normie= 5,
+  good = 15,
+  great = 25,
+  mega = 40,
+  epic = 60,
+  hyper = 70,
+  ultimate = 80,
+  perfect = 90,
+  edgy = 95,
+  'ultra-edgy' = 100,
+  omega = 125,
+  'ultra-omega' = 150,
+  godly = 200,
+  void= 250, // don't know exactly
 }

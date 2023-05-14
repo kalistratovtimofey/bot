@@ -15,7 +15,7 @@ export class DiscordWriterService {
     combineLatest([this.stopper.isAllowed$, interval(1300)])
       .subscribe(([isAllowed]) => {
         if (isAllowed) {
-          const message = this.messageQueue.pop();
+          const message = this.messageQueue.shift();
           if (message) {
             this.api.write(message!);
           }

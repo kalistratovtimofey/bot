@@ -28,6 +28,7 @@ import { AlarmComponent } from './components/alarm/alarm.component';
 import {NzModalModule} from "ng-zorro-antd/modal";
 import { EventsComponent } from './components/events/events.component';
 import { MovingComponent } from './components/moving/moving.component';
+import { EnchantComponent } from './components/enchant/enchant.component';
 
 registerLocaleData(en);
 
@@ -42,7 +43,8 @@ registerLocaleData(en);
     TimerComponent,
     AlarmComponent,
     EventsComponent,
-    MovingComponent
+    MovingComponent,
+    EnchantComponent
   ],
   imports: [
     BrowserModule,

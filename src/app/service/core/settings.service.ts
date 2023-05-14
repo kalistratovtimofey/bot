@@ -1,5 +1,14 @@
-import { Injectable } from '@angular/core';
-import {EventsSettings, FarmSettings, HuntSettings, Settings, TrainSettings, WorkSettings} from "./model/settings";
+import {Injectable} from '@angular/core';
+import {
+  EnchantSettings,
+  EnchantValues,
+  EventsSettings,
+  FarmSettings,
+  HuntSettings,
+  Settings,
+  TrainSettings,
+  WorkSettings
+} from "./model/settings";
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +17,11 @@ export class SettingsService {
 
   private settings: Settings
 
-  private playerName: string|null = null;
-  private playerId: string|null = null;
-  private token: string|null = null;
-  private channelId: string|null = null;
-
-
   constructor() {
     const storedSettings = localStorage.getItem('settings');
     if (storedSettings) {
       this.settings = JSON.parse(storedSettings);
+      // backport compatibility
       if (!this.settings.events) {
         this.settings.events = {
           lure: false,
@@ -28,6 +32,12 @@ export class SettingsService {
           arena: false,
           wait: 1500,
           waitSimple: 2500,
+        };
+      }
+      if (!this.settings.enchant) {
+        this.settings.enchant = {
+          command: 'enchant',
+          value: EnchantValues.epic,
         };
       }
     } else {
@@ -73,6 +83,10 @@ export class SettingsService {
           arena: false,
           wait: 1500,
           waitSimple: 2500,
+        },
+        enchant: {
+          command: 'enchant',
+          value: EnchantValues.epic,
         }
       };
     }
@@ -120,6 +134,10 @@ export class SettingsService {
 
   getEventsSettings(): EventsSettings {
     return this.settings.events;
+}
+
+getEnchantSettings(): EnchantSettings {
+    return this.settings.enchant;
 }
 
   setSettings(settings: Partial<Settings>): void {
