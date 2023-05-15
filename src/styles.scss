@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 .settings-col {
-  justify-content: center;
+  justify-content: space-between;
   display: flex;
   flex-direction: column;
 }
@@ -8,4 +8,17 @@
 nz-select {
   margin: 0 8px 10px 0;
   width: 200px;
+}
+
+.ant-input-wrapper>span:first-child{
+  width: 80px;
+}
+
+.ant-input-number{
+  width: 70px;
+}
+
+
+.ant-collapse-header {
+  height: 55px;
 }

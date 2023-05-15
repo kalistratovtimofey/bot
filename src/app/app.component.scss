@@ -1,6 +1,31 @@
 .body {
   margin: auto;
   margin-top: 10px;
-  max-width: 600px;
+  max-width: 1795px;
   padding-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
+.body>*{
+  margin-bottom: 10px;
+}
+.child {
+  width: 40%;
+}
+
+.card,
+.settings,
+.events{
+  width: 450px;
+  display: block;
+}
+
+
+//.body{
+//
+//}
+
+//.card{
+//  height: 195px;
+//}

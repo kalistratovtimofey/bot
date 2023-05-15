@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { AppComponent } from './app.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
@@ -30,6 +30,7 @@ import { EventsComponent } from './components/events/events.component';
 import { MovingComponent } from './components/moving/moving.component';
 import { EnchantComponent } from './components/enchant/enchant.component';
 import {NzInputNumberModule} from "ng-zorro-antd/input-number";
+import { AdvComponent } from './components/adv/adv.component';
 
 registerLocaleData(en);
 
@@ -45,7 +46,8 @@ registerLocaleData(en);
     AlarmComponent,
     EventsComponent,
     MovingComponent,
-    EnchantComponent
+    EnchantComponent,
+    AdvComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ registerLocaleData(en);
     NzProgressModule,
     NzGridModule,
     NzModalModule,
-    NzInputNumberModule
+    NzInputNumberModule,
+    NzCollapseModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

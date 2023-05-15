@@ -1,23 +1,22 @@
 <div class="body">
-<app-settings></app-settings>
-  <nz-divider></nz-divider>
-  <div style="text-align: center">
-    <button nz-button nzSize="large" nzShape="round" nzType="primary" (click)="start()">Start</button>
-  </div>
-  <nz-divider></nz-divider>
-  <app-events></app-events>
-  <nz-divider></nz-divider>
-  <app-hunt></app-hunt>
-  <nz-divider></nz-divider>
-  <app-work></app-work>
-  <nz-divider></nz-divider>
-  <app-farm></app-farm>
-  <nz-divider></nz-divider>
-  <app-train></app-train>
-  <nz-divider></nz-divider>
-  <app-moving></app-moving>
-  <nz-divider></nz-divider>
-  <app-enchant></app-enchant>
+<app-settings class="settings"> <button nz-button nzShape="round" nzType="primary" (click)="start()">Start</button></app-settings>
+<!--  <nz-divider></nz-divider>-->
+  <app-events class="events"></app-events>
+  <app-enchant class="card"></app-enchant>
+<!--  <nz-divider></nz-divider>-->
+  <app-hunt class="card"></app-hunt>
+<!--  <nz-divider></nz-divider>-->
+  <app-adv class="card"></app-adv>
+<!--  <nz-divider></nz-divider>-->
+  <app-work class="card"></app-work>
+<!--  <nz-divider></nz-divider>-->
+  <app-farm class="card"></app-farm>
+<!--  <nz-divider></nz-divider>-->
+  <app-train class="card"></app-train>
+<!--  <nz-divider></nz-divider>-->
+  <app-moving class="card"></app-moving>
+<!--  <nz-divider></nz-divider>-->
+
 
 </div>
 <app-alarm></app-alarm>

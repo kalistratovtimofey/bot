@@ -1,10 +1,10 @@
 <nz-card nzTitle="HUNT">
   <div nz-row>
-    <div nz-col nzSpan="12" class="settings-col">
+    <div nz-col nzSpan="12" class="settings-col card-content">
       <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="updateHunt()">enabled</label>
-      <br />
+      <span></span>
       <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="useHardmode" (ngModelChange)="updateHunt()">use hardmode</label>
-      <br />
+      <span></span>
       <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="useHealing" (ngModelChange)="updateHunt()">use heal</label>
     </div>
     <div nz-col nzSpan="12">
@@ -13,18 +13,3 @@
   </div>
   </nz-card>
 
-
-<nz-card nzTitle="ADVENTURE">
-  <div nz-row>
-    <div nz-col nzSpan="12" class="settings-col">
-      <label nz-checkbox [(ngModel)]="enabledAdventure" (ngModelChange)="updateAdv()">enabled</label>
-      <br />
-      <label nz-checkbox [nzDisabled]="!enabledAdventure" (ngModelChange)="updateAdv()" [(ngModel)]="useAdventureHardmode">use hardmode</label>
-      <br />
-      <label  nz-checkbox [nzDisabled]="!enabled" (ngModelChange)="updateAdv()" [(ngModel)]="useHealingAdventure" >use heal</label>
-    </div>
-    <div nz-col nzSpan="12">
-      <app-timer [commandService]="advService" [timeToFire]="advService.timeToFire$ | async"></app-timer>
-    </div>
-  </div>
-</nz-card>

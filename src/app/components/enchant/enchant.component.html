@@ -1,4 +1,8 @@
-<nz-card nzTitle="Enchant" >
+<nz-collapse>
+  <nz-collapse-panel
+    nzHeader="Enchant"
+    [nzActive]="false"
+    >
   <nz-select [(ngModel)]="command" (ngModelChange)="update()">
     <nz-option nzValue="enchant" nzLabel="enchant"></nz-option>
     <nz-option nzValue="refine" nzLabel="refine"></nz-option>
@@ -25,5 +29,6 @@
     <nz-option nzValue="sword" nzLabel="sword"></nz-option>
     <nz-option nzValue="armor" nzLabel="armor"></nz-option>
   </nz-select>
-  <button nz-button nzType="primary" (click)="start()">start</button>
-</nz-card>
+  <button nz-button nzType="primary" (click)="start()">enchant</button>
+  </nz-collapse-panel>
+</nz-collapse>

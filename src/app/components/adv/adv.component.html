@@ -1,0 +1,14 @@
+<nz-card nzTitle="ADVENTURE">
+  <div nz-row>
+    <div nz-col nzSpan="12" class="settings-col card-content">
+      <label nz-checkbox [(ngModel)]="enabledAdventure" (ngModelChange)="updateAdv()">enabled</label>
+      <span></span>
+      <label nz-checkbox [nzDisabled]="!enabledAdventure" (ngModelChange)="updateAdv()" [(ngModel)]="useAdventureHardmode">use hardmode</label>
+      <span></span>
+      <label  nz-checkbox [nzDisabled]="!enabled" (ngModelChange)="updateAdv()" [(ngModel)]="useHealingAdventure" >use heal</label>
+    </div>
+    <div nz-col nzSpan="12">
+      <app-timer [commandService]="advService" [timeToFire]="advService.timeToFire$ | async"></app-timer>
+    </div>
+  </div>
+</nz-card>

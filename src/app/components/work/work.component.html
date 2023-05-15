@@ -1,7 +1,7 @@
 <nz-card nzTitle="WORK">
   <div nz-row>
     <div nz-col nzSpan="12" class="settings-col">
-      <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()">enabled</label>
+      <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()" class="card">enabled</label>
       <br />
       <nz-select [(ngModel)]="selectedCommand" (ngModelChange)="update()">
         <nz-option-group nzLabel="Wood">
