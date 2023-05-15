@@ -5,7 +5,7 @@
       <span></span>
       <label nz-checkbox [nzDisabled]="!enabledAdventure" (ngModelChange)="updateAdv()" [(ngModel)]="useAdventureHardmode">use hardmode</label>
       <span></span>
-      <label  nz-checkbox [nzDisabled]="!enabled" (ngModelChange)="updateAdv()" [(ngModel)]="useHealingAdventure" >use heal</label>
+      <label  nz-checkbox [nzDisabled]="!enabledAdventure" (ngModelChange)="updateAdv()" [(ngModel)]="useHealingAdventure" >use heal</label>
     </div>
     <div nz-col nzSpan="12">
       <app-timer [commandService]="advService" [timeToFire]="advService.timeToFire$ | async"></app-timer>

@@ -8,7 +8,6 @@ import {AdvService} from "../../service/adv.service";
   styleUrls: ['./adv.component.scss']
 })
 export class AdvComponent {
-  enabled = this.settings.getHuntSettings().enabled;
   enabledAdventure = this.settings.getAdvSettings().enabled;
   useAdventureHardmode = this.settings.getAdvSettings().useHardmode;
   useHealingAdventure = this.settings.getAdvSettings().useHeal;
