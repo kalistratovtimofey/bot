@@ -63,7 +63,14 @@ export class WebsocketService {
       msg=> this.messages.next(msg)
     );
 
-    this.subject?.subscribe({complete: () => this.connect()})
+    this.subject?.subscribe({
+      complete: () => this.connect(),
+      error: err => {
+        console.log('error in websocket', err);
+        this.subject?.unsubscribe();
+        this.connect();
+      }
+    })
     // setTimeout(() => {
     //   this.messages.next(message);
     //   console.log('pushed test message', message);
