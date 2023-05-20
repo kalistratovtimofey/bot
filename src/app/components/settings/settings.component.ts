@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SettingsService} from "../../service/core/settings.service";
+import {AutoSettingsService} from "../../service/auto-settings.service";
 
 @Component({
   selector: 'app-settings',
@@ -15,7 +16,7 @@ export class SettingsComponent implements OnInit{
   botName = this.settings.getBotName();
   timeout = this.settings.getTimeout();
 
-  constructor(private settings: SettingsService) {
+  constructor(private settings: SettingsService, private settingUpdate: AutoSettingsService) {
   }
 
   ngOnInit(): void {
@@ -44,6 +45,10 @@ export class SettingsComponent implements OnInit{
 
   updateTimeout(timeout: number) {
     this.settings.setSettings({timeout});
+  }
+
+  updatePlayer() {
+    this.settingUpdate.update();
   }
 
 }

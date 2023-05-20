@@ -11,7 +11,7 @@ export class MovingComponent {
   constructor(private moveService: MoveAreaService) {
   }
 
-  prepare(area: number) {
+  prepare(area: number|string) {
     this.moveService.prepareMoving(area);
   }
 

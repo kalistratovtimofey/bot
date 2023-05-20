@@ -8,7 +8,7 @@ export const areas = [3, 5, 7, 8, 9];
 })
 export class MoveAreaService {
 
-  actions: Record<number, string[]> = {
+  actions: Record<number|string, string[]> = {
     3: [
       'rpg dismantle ultra log all',
       'rpg dismantle hyper log all',
@@ -54,11 +54,33 @@ export class MoveAreaService {
       'rpg trade c all',
       'rpg trade b all',
     ],
+    tt: [
+      'rpg sell wooden log all',
+      'rpg sell apple all',
+      'rpg sell wolf skin all',
+      'rpg sell zombie eye all',
+      'rpg sell unicorn horn all',
+      'rpg sell mermaid hair all',
+      'rpg sell chip all',
+      'rpg sell dragon scale all',
+      'rpg sell carrot all',
+      'rpg sell potato all',
+      'rpg sell bread all',
+      'rpg sell seed all',
+      'rpg sell bread seed all',
+      'rpg sell carrot seed all',
+      'rpg sell potato seed all',
+      'rpg sell healing potion all',
+      'rpg sell sword',
+      'y',
+      'rpg sell armor',
+      'y'
+    ]
   }
 
   constructor(private writer: DiscordWriterService) { }
 
-  prepareMoving(area: number) {
+  prepareMoving(area: number|string) {
     const commands = this.actions[area];
     if (!commands) {
       return;

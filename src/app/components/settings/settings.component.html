@@ -9,7 +9,8 @@
     <input nz-input placeholder="Player id" [(ngModel)]="playerId" (ngModelChange)="updatePlayerId($event)" />
     <input nz-input placeholder="Channel id" [(ngModel)]="channelId" (ngModelChange)="updateChannelId($event)" />
     <input nz-input placeholder="Bot name" [(ngModel)]="botName" (ngModelChange)="updateBotName($event)" />
-    <input nz-input placeholder="Timeout (ms)" [(ngModel)]="timeout" (ngModelChange)="updateTimeout($event)" />
+    <input nz-input placeholder="Notes" [(ngModel)]="timeout" (ngModelChange)="updateTimeout($event)" />
+    <button nz-button nzType="primary" (click)="updatePlayer()">get player info</button>
   </nz-collapse-panel>
 </nz-collapse>
 <ng-template #button>
