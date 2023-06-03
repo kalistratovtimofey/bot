@@ -26,6 +26,9 @@ export class EnchantService {
     this.command = this.settings.getEnchantSettings().command;
     const minValue = this.settings.getEnchantSettings().value;
     const command = 'rpg ' + this.command + ' ' +  type;
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
     this.subscription = this.reader.botRichMessages.pipe(
       filter(message => this.isMyEnchantMessage(message)),
       map(message => message.embeds?.[0]!.fields?.[0].value!)

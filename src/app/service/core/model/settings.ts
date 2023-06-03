@@ -39,7 +39,8 @@ export interface FarmSettings {
 
 export interface TrainSettings {
   enabled: boolean;
-  enabledPetCapture: boolean
+  enabledPetCapture: boolean;
+  tradeBefore: boolean;
 }
 
 export interface EventsSettings {

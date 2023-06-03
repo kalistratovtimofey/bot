@@ -10,13 +10,15 @@ import {TrainService} from "../../service/train.service";
 export class TrainComponent {
 
   enabled = this.settings.getTrainSettings().enabled;
-  enabledPets = this.settings.getTrainSettings().enabledPetCapture
+  enabledPets = this.settings.getTrainSettings().enabledPetCapture;
+  tradeBefore = this.settings.getTrainSettings().tradeBefore;
+
   constructor(private settings: SettingsService, public trainService: TrainService) {
   }
 
   update() {
     setTimeout(() => {
-      this.settings.setSettings({train: {enabled: this.enabled, enabledPetCapture: this.enabledPets}})
+      this.settings.setSettings({train: {enabled: this.enabled, enabledPetCapture: this.enabledPets, tradeBefore:this.tradeBefore}})
     });
   }
 

@@ -12,6 +12,9 @@ export class TrainService extends AbstractCommandService{
   override timer = 15 * 60 * 1000 + 1000;
 
   protected fireCommand() {
+    if (this.settings.getTrainSettings().tradeBefore) {
+      this.writer.pushMessage('rpg trade e all');
+    }
     this.writer.pushMessage('rpg tr ');
   }
 

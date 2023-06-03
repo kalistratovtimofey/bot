@@ -93,6 +93,7 @@ export class SettingsService {
         train: {
           enabled: true,
           enabledPetCapture: true,
+          tradeBefore: false,
         },
         randomEvents: {
           lure: {

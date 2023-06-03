@@ -1,9 +1,9 @@
 <nz-card nzTitle="TRAIN">
   <div nz-row class="card-content">
     <div nz-col nzSpan="12" class="settings-col">
-      <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()">enabled</label>
-      <br />
-      <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="enabledPets" (ngModelChange)="update()">Pets catching enabled</label>
+      <label nz-checkbox [(ngModel)]="enabled" (ngModelChange)="update()">enabled</label> <span></span>
+      <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="enabledPets" (ngModelChange)="update()">Pets catching enabled</label><span></span>
+      <label  nz-checkbox [nzDisabled]="!enabled"  [(ngModel)]="tradeBefore" (ngModelChange)="update()">Trade before training</label><span></span>
     </div>
     <div nz-col nzSpan="12">
       <app-timer [commandService]="trainService" [timeToFire]="trainService.timeToFire$ | async"></app-timer>

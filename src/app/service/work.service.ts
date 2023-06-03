@@ -27,9 +27,6 @@ export class WorkService extends AbstractCommandService{
     );
   }
   protected processMessage(text: string): void {
-    if (this.workType === 'dynamite') {
-      this.writer.pushMessage('rpg trade e all');
-    }
   }
 
   protected fireCommand() {
